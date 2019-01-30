@@ -6,13 +6,14 @@ REM `new_cert.crt` in the current folder.
 REM It subsequently copies it into the folder specified
 REM below:
 if not defined HISPARC_ROOT (
-  echo HISPARC_ROOT not set. Trying relative path.
-  set HISPARC_ROOT=..\..\
+  echo HISPARC_ROOT not set. Guessing...
+  set HISPARC_ROOT="C:\Program Files\HiSPARC\hisparc\"
 )
 echo HiSPARC software should be in: %HISPARC_ROOT%
 echo We will try both admin v6/v7 and v9 openvpn locations
 SET openvpn_x64_location=\admin\openvpn64\config\
 SET openvpn_x32_location=\admin\openvpn32\config\
+SET openvpn_location_v6=\admin\openvpn\config\
 SET openvpn_x64_location_v9=\admin\openvpn\x64\config\
 SET openvpn_x32_location_v9=\admin\openvpn\x32\config\
 REM
@@ -53,9 +54,9 @@ echo
 echo Copying files
 copy /Y new_cert.crt "%HISPARC_ROOT%\%openvpn_x32_location%\ca.crt"
 copy /Y new_cert.crt "%HISPARC_ROOT%\%openvpn_x64_location%\ca.crt"
+copy /Y new_cert.crt "%HISPARC_ROOT%\%openvpn_location_v6%\ca.crt"
+copy /Y new_cert.crt "\%openvpn_location_v6%\ca.crt"
 copy /Y new_cert.crt "%HISPARC_ROOT%\%openvpn_x32_location_v9%\ca.crt"
 copy /Y new_cert.crt "%HISPARC_ROOT%\%openvpn_x64_location_v9%\ca.crt"
-echo WARNING!! WE WILL REBOOT IN ABOUT 20 SECONDS!
-REM below is just a hack to pause 20 seconds
-ping -n 20 127.0.0.1 >nul
+echo REBOOT!
 shutdown /r /f
