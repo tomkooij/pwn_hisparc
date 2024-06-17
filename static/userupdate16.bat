@@ -29,7 +29,7 @@ echo with open^(HISPARC_CONFIG_INI, 'w'^) as outfile: >> update16.py
 echo     for line in lines: >> update16.py
 echo         if "currentuser" in line.lower^(^): >> update16.py
 echo             # replace version number >> update16.py
-echo             line = re.sub^('\d+', '16', line^) >> update16.py
+echo             line = re.sub^(r'\d+', '16', line^) >> update16.py
 echo         outfile.write^(line^) >> update16.py
 echo # >> update16.py
 echo # change upload URL from frome.nikhef.nl to upload.hisparc.nl >> update16.py
