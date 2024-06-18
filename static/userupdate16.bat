@@ -37,7 +37,7 @@ echo with open^(HSMONITOR_CONFIG, 'r'^) as infile: >> update16.py
 echo     lines = infile.readlines^(^) >> update16.py
 echo with open^(HSMONITOR_CONFIG, 'w'^) as outfile: >> update16.py
 echo     for line in lines: >> update16.py
-echo         line = line.replace^('frome.nikhef.nl', 'upload.hisparc.nl'^) >> update16.py
+echo         line = line.replace^('http://frome.nikhef.nl', 'https://upload.hisparc.nl'^) >> update16.py
 echo         outfile.write^(line^) >> update16.py
 echo
 echo Run python helper script
